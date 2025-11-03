@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fake News Detector</title>
+</head>
+
+<body>
+    <h1>Phát hiện tin giả 📰</h1>
+    <textarea id="text" rows="8" cols="60" placeholder="Nhập nội dung bài viết..."></textarea><br>
+    <button onclick="analyze()">Phân tích</button>
+    <pre id="result"></pre>
+
+    <script>
+        async function analyze() {
+            const text = document.getElementById("text").value;
+            const res = await fetch("/api/analyze", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ text })
+            });
+            const data = await res.json();
+            document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+        }
+    </script>
+</body>
+
+</html>
