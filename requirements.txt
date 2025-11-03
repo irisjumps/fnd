@@ -2,7 +2,5 @@ flask
 pandas
 scikit-learn
 numpy
-tensorflow
-torch
-transformers
-rich
+
+
